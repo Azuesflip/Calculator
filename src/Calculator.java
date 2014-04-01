@@ -123,10 +123,6 @@ public  class Calculator extends JFrame implements ActionListener
         }
     }
     
-    public void actionPerformed(ActionEvent ae)
-    {
-        
-    }
     
     public void clear()
     {
@@ -181,6 +177,7 @@ public  class Calculator extends JFrame implements ActionListener
     public void getResult()
     {
         double result = 0;
+        temporary[1] = Double.parseDouble(display.getText());
         String temp0 = Double.toString(temporary[0]);
         String temp1 = Double.toString(temporary[1]);
         
@@ -210,7 +207,7 @@ public  class Calculator extends JFrame implements ActionListener
             else if(function[0] == true)
                 result = temporary[0] + temporary[1];
             else if(function[1] == true)
-                result = temporary[1] - temporary[0];
+                result = temporary[0] - temporary[1];
             display.setText(Double.toString(result));
             for(int i = 0; i < 4; i++)
                 function[i] = false;
@@ -221,7 +218,63 @@ public  class Calculator extends JFrame implements ActionListener
         }
     }
     
-    
+    public void actionPerformed(ActionEvent ae)
+    {
+        if (ae.getSource() == button[0])
+            display.append("7");
+        if (ae.getSource() == button[1])
+            display.append("8");
+        if (ae.getSource() == button[2])
+            display.append("9");
+        if (ae.getSource() == button[3])
+        {
+            temporary[0] = Double.parseDouble(display.getText());
+            function[0] = true;
+            display.setText("");
+        }
+        if (ae.getSource() == button[4])
+            display.append("4");
+        if (ae.getSource() == button[5])
+            display.append("5");
+        if (ae.getSource() == button[6])
+            display.append("6");
+        if (ae.getSource() == button[7])
+        {
+            temporary[0] = Double.parseDouble(display.getText());
+            function[1] = true;
+            display.setText("");
+        }
+        if (ae.getSource() == button[8])
+            display.append("1");
+        if (ae.getSource() == button[9])
+            display.append("2");
+        if (ae.getSource() == button[10])
+            display.append("3");
+        if (ae.getSource() == button[11])
+        {
+            temporary[0] = Double.parseDouble(display.getText());
+            function[2] = true;
+            display.setText("");
+        }
+        if (ae.getSource() == button[12])
+            display.append(".");
+        if (ae.getSource() == button[13])
+        {
+            temporary[0] = Double.parseDouble(display.getText());
+            function[3] = true;
+            display.setText("");
+        }
+        if (ae.getSource() == button[14])
+            clear();
+        if (ae.getSource() == button[15])
+            getSqrt();
+        if (ae.getSource() == button[16])
+            getPosNeg();
+        if (ae.getSource() == button[17])
+            getResult();
+        if (ae.getSource() == button[18])
+            display.append("0");
+    }
      
     public static void main(String[] args)
     {
